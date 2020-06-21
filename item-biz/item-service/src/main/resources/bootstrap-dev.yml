@@ -1,0 +1,21 @@
+server:
+  port: ${client.port:8071}
+spring:
+  application:
+    name: item-service
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: ${nacos.ip:127.0.0.1}:${nacos.port:8848}
+        file-extension: yml
+        namespace: a7fafa37-79e8-4dfa-9cc7-2739858e8405
+        group: item-servic-group
+      discovery:
+        server-addr: ${nacos.ip:127.0.0.1}:${nacos.port:8848}
+        namespace: a7fafa37-79e8-4dfa-9cc7-2739858e8405
+mall:
+  item:
+    itemNo: ${mall.item.itemNo:"123456"}
+    itemName: ${mall.item.itemName:"56431"}

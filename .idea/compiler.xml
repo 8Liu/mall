@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mall-common" />
+        <module name="order-service" />
+        <module name="item-service" />
+        <module name="order-api" />
+        <module name="item-api" />
+        <module name="user-biz" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="item-api" options="-parameters" />
+      <module name="item-biz" options="-parameters" />
+      <module name="item-service" options="-parameters" />
+      <module name="mall" options="-parameters" />
+      <module name="mall-common" options="-parameters" />
+      <module name="order-api" options="-parameters" />
+      <module name="order-biz" options="-parameters" />
+      <module name="order-service" options="-parameters" />
+      <module name="user-biz" options="-parameters" />
+    </option>
+  </component>
+</project>

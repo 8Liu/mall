@@ -1,0 +1,17 @@
+server:
+  port: 8071
+spring:
+  application:
+    name: item-service
+  profiles:
+    active: test
+  cloud:
+    nacos:
+      config:
+        server-addr: ${nacos.ip:127.0.0.1}:${nacos.port:8848}
+        file-extension: yml
+        namespace: 22a3183c-c060-4824-b2ad-c4c4f62287b0
+        group: item-servic-group
+      discovery:
+        server-addr: ${nacos.ip:127.0.0.1}:${nacos.port:8848}
+        namespace: 22a3183c-c060-4824-b2ad-c4c4f62287b0

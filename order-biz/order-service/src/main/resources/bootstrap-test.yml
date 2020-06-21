@@ -1,0 +1,17 @@
+server:
+  port: ${client.port:8081}
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: test
+  cloud:
+    nacos:
+      config:
+        server-addr: ${nacos.ip:127.0.0.1}:${nacos.port:8848}
+        file-extension: yml
+        namespace: 22a3183c-c060-4824-b2ad-c4c4f62287b0
+        group: order-service-group
+      discovery:
+        server-addr: ${nacos.ip:127.0.0.1}:${nacos.port:8848}
+        namespace: 22a3183c-c060-4824-b2ad-c4c4f62287b0
