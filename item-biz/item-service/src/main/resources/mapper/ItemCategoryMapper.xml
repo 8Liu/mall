@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liudehuang.item.mapper.ItemCategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.liudehuang.item.model.domain.ItemCategory" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="merchant_id" property="merchantId" jdbcType="BIGINT" />
+    <result column="category_no" property="categoryNo" jdbcType="VARCHAR" />
+    <result column="category_icon" property="categoryIcon" jdbcType="VARCHAR" />
+    <result column="category_pic" property="categoryPic" jdbcType="VARCHAR" />
+    <result column="parent_category_id" property="parentCategoryId" jdbcType="VARCHAR" />
+    <result column="category_level" property="categoryLevel" jdbcType="INTEGER" />
+    <result column="category_sort" property="categorySort" jdbcType="INTEGER" />
+    <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, merchant_id, category_no, category_icon, category_pic, parent_category_id, category_level,
+    category_sort, category_name, created_time, created_by, updated_time, updated_by, 
+    remark, deleted
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_item_category
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.liudehuang.item.model.domain.ItemCategory" >
+
+    insert into t_item_category (id, merchant_id, category_no, 
+      category_icon, category_pic, parent_category_id, 
+      category_level, category_sort, category_name, 
+      created_time, created_by, updated_time, 
+      updated_by, remark, deleted
+      )
+    values (#{id,jdbcType=BIGINT}, #{merchantId,jdbcType=BIGINT}, #{categoryNo,jdbcType=VARCHAR}, 
+      #{categoryIcon,jdbcType=VARCHAR}, #{categoryPic,jdbcType=VARCHAR}, #{parentCategoryId,jdbcType=VARCHAR}, 
+      #{categoryLevel,jdbcType=INTEGER}, #{categorySort,jdbcType=INTEGER}, #{categoryName,jdbcType=VARCHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{deleted,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liudehuang.item.model.domain.ItemCategory" >
+    insert into t_item_category
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="merchantId != null" >
+        merchant_id,
+      </if>
+      <if test="categoryNo != null" >
+        category_no,
+      </if>
+      <if test="categoryIcon != null" >
+        category_icon,
+      </if>
+      <if test="categoryPic != null" >
+        category_pic,
+      </if>
+      <if test="parentCategoryId != null" >
+        parent_category_id,
+      </if>
+      <if test="categoryLevel != null" >
+        category_level,
+      </if>
+      <if test="categorySort != null" >
+        category_sort,
+      </if>
+      <if test="categoryName != null" >
+        category_name,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="merchantId != null" >
+        #{merchantId,jdbcType=BIGINT},
+      </if>
+      <if test="categoryNo != null" >
+        #{categoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryIcon != null" >
+        #{categoryIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryPic != null" >
+        #{categoryPic,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCategoryId != null" >
+        #{parentCategoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryLevel != null" >
+        #{categoryLevel,jdbcType=INTEGER},
+      </if>
+      <if test="categorySort != null" >
+        #{categorySort,jdbcType=INTEGER},
+      </if>
+      <if test="categoryName != null" >
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudehuang.item.model.domain.ItemCategory" >
+    update t_item_category
+    <set >
+      <if test="merchantId != null" >
+        merchant_id = #{merchantId,jdbcType=BIGINT},
+      </if>
+      <if test="categoryNo != null" >
+        category_no = #{categoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryIcon != null" >
+        category_icon = #{categoryIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryPic != null" >
+        category_pic = #{categoryPic,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCategoryId != null" >
+        parent_category_id = #{parentCategoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryLevel != null" >
+        category_level = #{categoryLevel,jdbcType=INTEGER},
+      </if>
+      <if test="categorySort != null" >
+        category_sort = #{categorySort,jdbcType=INTEGER},
+      </if>
+      <if test="categoryName != null" >
+        category_name = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liudehuang.item.model.domain.ItemCategory" >
+    update t_item_category
+    set merchant_id = #{merchantId,jdbcType=BIGINT},
+      category_no = #{categoryNo,jdbcType=VARCHAR},
+      category_icon = #{categoryIcon,jdbcType=VARCHAR},
+      category_pic = #{categoryPic,jdbcType=VARCHAR},
+      parent_category_id = #{parentCategoryId,jdbcType=VARCHAR},
+      category_level = #{categoryLevel,jdbcType=INTEGER},
+      category_sort = #{categorySort,jdbcType=INTEGER},
+      category_name = #{categoryName,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from t_item_category
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectByCategoryNo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_item_category
+    where merchant_id = #{merchantId, jdbcType=BIGINT}
+    and category_no = #{categoryNo, jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByParentCategoryId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_item_category
+    where merchant_id = #{merchantId, jdbcType=BIGINT}
+    and parent_category_id = #{parentCategoryId, jdbcType=BIGINT}
+  </select>
+</mapper>

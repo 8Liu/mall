@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liudehuang.item.mapper.ItemSpuMapper" >
+  <resultMap id="ItemBaseResultMap" type="com.liudehuang.item.model.domain.ItemSpuBase" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="merchant_id" property="merchantId" jdbcType="BIGINT" />
+    <result column="item_no" property="itemNo" jdbcType="VARCHAR" />
+    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="category_no" property="categoryNo" jdbcType="VARCHAR" />
+    <result column="brand_no" property="brandNo" jdbcType="VARCHAR" />
+    <result column="item_pic" property="itemPic" jdbcType="VARCHAR" />
+    <result column="item_keyword" property="itemKeyword" jdbcType="VARCHAR" />
+    <result column="item_unit" property="itemUnit" jdbcType="VARCHAR" />
+    <result column="item_brief" property="itemBrief" jdbcType="VARCHAR" />
+    <result column="is_sale" property="isSale" jdbcType="INTEGER" />
+    <result column="is_new" property="isNew" jdbcType="INTEGER" />
+    <result column="is_hot" property="isHot" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ItemDetailResultMap" type="com.liudehuang.item.model.domain.ItemSpuDetail" extends="ItemBaseResultMap" >
+    <result column="item_gallery" property="itemGallery" jdbcType="LONGVARCHAR" />
+    <result column="item_detail" property="itemDetail" jdbcType="LONGVARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, merchant_id, item_no, item_name, category_no, brand_no, item_pic, item_keyword,
+    item_unit, item_brief, is_sale, is_new, is_hot
+  </sql>
+  <sql id="Detail_Column_List" >
+    item_gallery, item_detail, created_time, created_by, updated_time,
+    updated_by, remark, deleted
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_item_spu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.liudehuang.item.model.domain.ItemSpuDetail" >
+    insert into t_item_spu (id, merchant_id, item_no,
+      item_name, category_no, brand_no, 
+      item_pic, item_keyword, item_unit, 
+      item_brief, is_sale, is_new, 
+      is_hot, created_time, created_by, 
+      updated_time, updated_by, remark, 
+      deleted, item_gallery, item_detail
+      )
+    values (#{id,jdbcType=BIGINT}, #{merchantId,jdbcType=BIGINT}, #{itemNo,jdbcType=VARCHAR}, 
+      #{itemName,jdbcType=VARCHAR}, #{categoryNo,jdbcType=VARCHAR}, #{brandNo,jdbcType=VARCHAR}, 
+      #{itemPic,jdbcType=VARCHAR}, #{itemKeyword,jdbcType=VARCHAR}, #{itemUnit,jdbcType=VARCHAR}, 
+      #{itemBrief,jdbcType=VARCHAR}, #{isSale,jdbcType=INTEGER}, #{isNew,jdbcType=INTEGER}, 
+      #{isHot,jdbcType=INTEGER}, #{createdTime,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
+      #{updatedTime,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=INTEGER}, #{itemGallery,jdbcType=LONGVARCHAR}, #{itemDetail,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liudehuang.item.model.domain.ItemSpuDetail" >
+    insert into t_item_spu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="merchantId != null" >
+        merchant_id,
+      </if>
+      <if test="itemNo != null" >
+        item_no,
+      </if>
+      <if test="itemName != null" >
+        item_name,
+      </if>
+      <if test="categoryNo != null" >
+        category_no,
+      </if>
+      <if test="brandNo != null" >
+        brand_no,
+      </if>
+      <if test="itemPic != null" >
+        item_pic,
+      </if>
+      <if test="itemKeyword != null" >
+        item_keyword,
+      </if>
+      <if test="itemUnit != null" >
+        item_unit,
+      </if>
+      <if test="itemBrief != null" >
+        item_brief,
+      </if>
+      <if test="isSale != null" >
+        is_sale,
+      </if>
+      <if test="isNew != null" >
+        is_new,
+      </if>
+      <if test="isHot != null" >
+        is_hot,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="itemGallery != null" >
+        item_gallery,
+      </if>
+      <if test="itemDetail != null" >
+        item_detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="merchantId != null" >
+        #{merchantId,jdbcType=BIGINT},
+      </if>
+      <if test="itemNo != null" >
+        #{itemNo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryNo != null" >
+        #{categoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="brandNo != null" >
+        #{brandNo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemPic != null" >
+        #{itemPic,jdbcType=VARCHAR},
+      </if>
+      <if test="itemKeyword != null" >
+        #{itemKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="itemUnit != null" >
+        #{itemUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="itemBrief != null" >
+        #{itemBrief,jdbcType=VARCHAR},
+      </if>
+      <if test="isSale != null" >
+        #{isSale,jdbcType=INTEGER},
+      </if>
+      <if test="isNew != null" >
+        #{isNew,jdbcType=INTEGER},
+      </if>
+      <if test="isHot != null" >
+        #{isHot,jdbcType=INTEGER},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="itemGallery != null" >
+        #{itemGallery,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="itemDetail != null" >
+        #{itemDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudehuang.item.model.domain.ItemSpuDetail" >
+    update t_item_spu
+    <set >
+      <if test="merchantId != null" >
+        merchant_id = #{merchantId,jdbcType=BIGINT},
+      </if>
+      <if test="itemNo != null" >
+        item_no = #{itemNo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryNo != null" >
+        category_no = #{categoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="brandNo != null" >
+        brand_no = #{brandNo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemPic != null" >
+        item_pic = #{itemPic,jdbcType=VARCHAR},
+      </if>
+      <if test="itemKeyword != null" >
+        item_keyword = #{itemKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="itemUnit != null" >
+        item_unit = #{itemUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="itemBrief != null" >
+        item_brief = #{itemBrief,jdbcType=VARCHAR},
+      </if>
+      <if test="isSale != null" >
+        is_sale = #{isSale,jdbcType=INTEGER},
+      </if>
+      <if test="isNew != null" >
+        is_new = #{isNew,jdbcType=INTEGER},
+      </if>
+      <if test="isHot != null" >
+        is_hot = #{isHot,jdbcType=INTEGER},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="itemGallery != null" >
+        item_gallery = #{itemGallery,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="itemDetail != null" >
+        item_detail = #{itemDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liudehuang.item.model.domain.ItemSpuBase" >
+    update t_item_spu
+    set merchant_id = #{merchantId,jdbcType=BIGINT},
+      item_no = #{itemNo,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      category_no = #{categoryNo,jdbcType=VARCHAR},
+      brand_no = #{brandNo,jdbcType=VARCHAR},
+      item_pic = #{itemPic,jdbcType=VARCHAR},
+      item_keyword = #{itemKeyword,jdbcType=VARCHAR},
+      item_unit = #{itemUnit,jdbcType=VARCHAR},
+      item_brief = #{itemBrief,jdbcType=VARCHAR},
+      is_sale = #{isSale,jdbcType=INTEGER},
+      is_new = #{isNew,jdbcType=INTEGER},
+      is_hot = #{isHot,jdbcType=INTEGER},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <!--根据商品ID查询商品基本信息-->
+  <select id="selectByPrimaryKey" resultMap="ItemBaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_item_spu
+    where merchant_id = #{merchantId, jdbcType=BIGINT}
+    and id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectBySpuNo" resultMap="ItemBaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_item_spu
+    where merchant_id = #{merchantId, jdbcType=BIGINT}
+    and item_no = #{spuNo,jdbcType=VARCHAR}
+  </select>
+
+  <!--根据商品ID查询商品spu详情-->
+  <select id="selectDetailByPrimaryKey" resultMap="ItemDetailResultMap">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Detail_Column_List" />
+    from t_item_spu
+    where merchant_id = #{merchantId, jdbcType=BIGINT}
+    and id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <!--根据商品分类编号查询商品分类信息-->
+  <select id="selectByCategoryNo" resultMap="ItemBaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_item_spu
+    where merchant_id = #{merchantId, jdbcType=BIGINT}
+    and category_no = #{categoryNo,jdbcType=VARCHAR}
+  </select>
+
+  <!--根据商品品牌编号查询商品品牌信息-->
+  <select id="selectByBrandNo" resultMap="ItemBaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from t_item_spu
+    where merchant_id = #{merchantId, jdbcType=BIGINT}
+    and brand_no = #{brandNo,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -10,8 +10,11 @@ spring:
       config:
         server-addr: ${nacos.ip:127.0.0.1}:${nacos.port:8848}
         file-extension: yml
-        namespace: a7fafa37-79e8-4dfa-9cc7-2739858e8405
+        #namespace: a7fafa37-79e8-4dfa-9cc7-2739858e8405
         group: item-servic-group
+        namespace: 0b9e5d70-bc09-4eef-9c57-3fa86a027818
       discovery:
         server-addr: ${nacos.ip:127.0.0.1}:${nacos.port:8848}
-        namespace: a7fafa37-79e8-4dfa-9cc7-2739858e8405
+        #namespace: a7fafa37-79e8-4dfa-9cc7-2739858e8405
+        namespace: 0b9e5d70-bc09-4eef-9c57-3fa86a027818
+

@@ -15,5 +15,4 @@
         <module>item-api</module>
         <module>item-service</module>
     </modules>
-
 </project>

@@ -8,13 +8,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="mall-common" />
-        <module name="order-service" />
-        <module name="item-service" />
         <module name="order-api" />
+        <module name="item-service" />
+        <module name="order-service" />
         <module name="item-api" />
-        <module name="user-biz" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="user-biz" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
