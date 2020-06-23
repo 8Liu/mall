@@ -1,4 +1,4 @@
-package com.liudehuang.item.model.domain;
+package com.liudehuang.item.api.model.domain;
 
 import lombok.Data;
 

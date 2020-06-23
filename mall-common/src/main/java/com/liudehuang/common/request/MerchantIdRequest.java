@@ -16,5 +16,7 @@ import java.io.Serializable;
 @Data
 public class MerchantIdRequest implements Serializable {
 
+    private static final long serialVersionUID = -4884713251350060095L;
+
     private Long merchantId;
 }

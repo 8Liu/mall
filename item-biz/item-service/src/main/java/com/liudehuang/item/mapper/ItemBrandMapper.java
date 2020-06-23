@@ -1,22 +1,33 @@
 package com.liudehuang.item.mapper;
 
-import com.liudehuang.item.model.domain.ItemBrand;
+import com.liudehuang.item.api.model.domain.ItemBrandBase;
+import com.liudehuang.item.api.model.domain.ItemBrandDetail;
+import com.liudehuang.item.model.request.ItemBrandRequest;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
 @Mapper
 public interface ItemBrandMapper {
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(@Param("merchantId") Long merchantId, @Param("brandId") Long brandId);
 
-    int insert(ItemBrand record);
+    int insert(ItemBrandRequest record);
 
-    int insertSelective(ItemBrand record);
+    int insertSelective(ItemBrandRequest record);
 
-    int updateByPrimaryKeySelective(ItemBrand record);
+    int updateByPrimaryKeySelective(ItemBrandRequest record);
 
-    int updateByPrimaryKey(ItemBrand record);
+    int updateByPrimaryKey(ItemBrandRequest record);
 
-    ItemBrand selectByPrimaryKey(Long id);
+    /**
+     * 根据品牌ID查询品牌信息
+     * @param merchantId
+     * @param brandId
+     * @return
+     */
+    ItemBrandDetail selectByPrimaryKey(@Param("merchantId") Long merchantId, @Param("brandId") Long brandId);
 
     /**
      * 根据品牌编号查询品牌信息
@@ -24,5 +35,12 @@ public interface ItemBrandMapper {
      * @param brandNo
      * @return
      */
-    ItemBrand selectByBrandNo(@Param("merchantId") Long merchantId, @Param("brandNo") String brandNo);
+    ItemBrandBase selectByBrandNo(@Param("merchantId") Long merchantId, @Param("brandNo") String brandNo);
+
+    /**
+     * 根据商户号查询商品品牌信息
+     * @param merchantId
+     * @return
+     */
+    List<ItemBrandBase> selectByMerchantId(@Param("merchantId") Long merchantId);
 }

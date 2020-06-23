@@ -15,4 +15,11 @@
         <module>item-api</module>
         <module>item-service</module>
     </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.liudehuang</groupId>
+            <artifactId>mall-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

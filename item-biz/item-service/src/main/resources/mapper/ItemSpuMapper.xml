@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.liudehuang.item.mapper.ItemSpuMapper" >
-  <resultMap id="ItemBaseResultMap" type="com.liudehuang.item.model.domain.ItemSpuBase" >
+  <resultMap id="ItemBaseResultMap" type="com.liudehuang.item.api.model.domain.ItemSpuBase" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="merchant_id" property="merchantId" jdbcType="BIGINT" />
     <result column="item_no" property="itemNo" jdbcType="VARCHAR" />
@@ -16,7 +16,7 @@
     <result column="is_new" property="isNew" jdbcType="INTEGER" />
     <result column="is_hot" property="isHot" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap id="ItemDetailResultMap" type="com.liudehuang.item.model.domain.ItemSpuDetail" extends="ItemBaseResultMap" >
+  <resultMap id="ItemDetailResultMap" type="com.liudehuang.item.api.model.domain.ItemSpuDetail" extends="ItemBaseResultMap" >
     <result column="item_gallery" property="itemGallery" jdbcType="LONGVARCHAR" />
     <result column="item_detail" property="itemDetail" jdbcType="LONGVARCHAR" />
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
@@ -38,7 +38,7 @@
     delete from t_item_spu
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.liudehuang.item.model.domain.ItemSpuDetail" >
+  <insert id="insert" parameterType="com.liudehuang.item.api.model.domain.ItemSpuDetail" >
     insert into t_item_spu (id, merchant_id, item_no,
       item_name, category_no, brand_no, 
       item_pic, item_keyword, item_unit, 
@@ -56,7 +56,7 @@
       #{deleted,jdbcType=INTEGER}, #{itemGallery,jdbcType=LONGVARCHAR}, #{itemDetail,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.liudehuang.item.model.domain.ItemSpuDetail" >
+  <insert id="insertSelective" parameterType="com.liudehuang.item.api.model.domain.ItemSpuDetail" >
     insert into t_item_spu
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -189,7 +189,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.liudehuang.item.model.domain.ItemSpuDetail" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudehuang.item.api.model.domain.ItemSpuDetail" >
     update t_item_spu
     <set >
       <if test="merchantId != null" >
@@ -255,7 +255,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.liudehuang.item.model.domain.ItemSpuBase" >
+  <update id="updateByPrimaryKey" parameterType="com.liudehuang.item.api.model.domain.ItemSpuBase" >
     update t_item_spu
     set merchant_id = #{merchantId,jdbcType=BIGINT},
       item_no = #{itemNo,jdbcType=VARCHAR},
