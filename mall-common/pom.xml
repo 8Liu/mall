@@ -29,7 +29,7 @@
         <commons.lang3.version>3.9</commons.lang3.version>
         <commons.beanutils.version>1.9.4</commons.beanutils.version>
         <!-- apache.httpcomponents jar version -->
-        <httpcomponents.version>4.5.10</httpcomponents.version>
+        <httpcomponents.version>4.5.13</httpcomponents.version>
         <!-- google.zxing jar version -->
         <google.zxing.version>3.4.0</google.zxing.version>
     </properties>
