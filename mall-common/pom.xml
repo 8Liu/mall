@@ -18,7 +18,7 @@
         <jsonwebtoken.version>0.9.0</jsonwebtoken.version>
         <!-- fastjson jar version -->
         <fastjson.version>1.2.68</fastjson.version>
-        <spring-framework.version>5.1.7.RELEASE</spring-framework.version>
+        <spring-framework.version>5.3.18</spring-framework.version>
         <slf4j.version>1.7.30</slf4j.version>
 
         <!-- dom4j jar version -->
